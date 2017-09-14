@@ -1,0 +1,428 @@
+/*
+ *	Copyright 2017 Woramat Ngamkham
+ *
+ *	Licensed under the Apache License, Version 2.0 (the "License");
+ *	you may not use this file except in compliance with the License.
+ *	You may obtain a copy of the License at
+ *
+ *	    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *	Unless required by applicable law or agreed to in writing, software
+ *	distributed under the License is distributed on an "AS IS" BASIS,
+ *	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *	See the License for the specific language governing permissions and
+ *	limitations under the License.
+ *
+ */
+
+* {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+   	box-sizing:border-box;
+}
+
+.wrapper, .menu, .content {
+   	user-select: none;
+   	-moz-user-select: none;
+   	-webkit-user-select: none;
+   	-ms-user-select: none;
+}
+
+body {
+ 	margin: 0;
+ 	background-color: #31353D;
+ 	color: #EEEFF7;
+ 	font-family: 'Prompt', sans-serif;
+}
+
+a:hover, active, visited {
+ 	color: #FFF;
+ 	text-decoration: none;
+}
+
+button:focus, active, visited, clicked {
+  	outline: none !important;
+}
+
+.wrapper {
+	position: fixed;
+	background-color: #333;
+	margin: 0;
+
+	width: 100%;
+	height: 100%;
+
+	line-height: 1.5;
+
+	filter: opacity(0%);
+	-webkit-filter: opacity(0%);
+	-moz-filter: opacity(0%);
+	-ms-filter: opacity(0%);
+
+
+	transition: background-color 0.3s linear;
+
+	z-index: -99;
+}
+
+.wrapper.open-selection {
+	position: absolute;
+	margin-top: 10vh;
+	margin-bottom: 10vh;
+	background-color: #000;
+
+	filter: opacity(40%);
+	-webkit-filter: opacity(40%);
+	-moz-filter: opacity(40%);
+	-ms-filter: opacity(40%);
+
+	transition: background-color 0.3s linear;
+
+	z-index: 99;
+}
+
+.icon-menu {
+	width: 20vw;
+	height: 10vh;
+
+	background-color: inherit;
+	border: none;
+}
+
+.nav-container {
+	position: absolute;
+	display: inline;
+	margin: 0;
+	padding: 0;
+
+	width: 100vw;
+	height: 10vh;
+
+	z-index: 999;
+}
+
+.selection {
+	display: none;
+	z-index: 100;
+}
+
+.selection .btn-link {
+	cursor: pointer;
+	margin: 0;
+	padding: 1vh 1vw 1vh 1vw;
+	height: inherit;
+
+	font-size: 2.25vmin;
+	width: 15vw;
+
+	text-align: center;
+	border: none;
+
+	background-color: #000;
+	color: #FFF;
+
+	transition: border 0.08s linear;
+}
+
+.nav-list-menu {
+  	display: none;
+}
+
+.subject-name {
+	position: absolute;
+	display: inline-block;
+
+	margin-top: 2.8vh;
+	margin-bottom: 2.5vh;
+	margin-left: 1vw;
+	padding-right: 2.5vw;
+	text-align: right;
+	font-size: 2.75vmin;
+	letter-spacing: 0.1vmin;
+
+	border-left: solid 1px;
+	border-left-color: #FFF;
+
+	color: inherit;
+	background-color: inherit;
+}
+
+.content {
+	margin: 0;
+	padding-top: 10vh;
+
+	width: 100vw;
+	height: 87.5vh;
+
+	text-align: center;
+	align-content: center;
+}
+
+.describe-box {
+	display: none;
+}
+
+.describe-box[class*="data-room"] {
+
+	display: block;
+
+	margin: 0;
+	padding: 10vh 15vw 0 15vw;
+	width: 100vw;
+	height: auto;
+
+	position: absolute;
+	text-align: center;
+	z-index: 10;
+}
+
+.text {
+	font-size: 2.75vmin;
+	padding-bottom: 2.775vh;
+	border-bottom: solid 1px #FFF;
+}
+
+.text #r-state {
+	font-style: italic;
+	font-weight: 600;
+}
+
+.text #r-state.on {
+	color: #00e600;
+}
+
+.text #r-state.off {
+	color: #ff1a1a;
+}
+
+.btn-light {
+ 	cursor: pointer;
+ 	padding: 5px 10px 5px 10px;
+ 	margin: 0 2.5vw 0 2.5vw;
+
+ 	width: 20vw;
+ 	height: 7.6vmin;
+
+ 	border: 2px solid #000;
+ 	border-radius: 64px;
+
+ 	font-size: 2.5vmin;
+ 	font-weight: 600;
+
+ 	color: #000;
+ 	background-color: #565D7F;
+
+    -webkit-transition: background-position 0.3s ease-in-out, color 0.22s linear;
+	-moz-transition: background-position 0.3s ease-in-out, color 0.22s linear;
+	transition: background-position 0.3s ease-in-out, color 0.22s linear;
+}
+
+#btn-switch-open.actived-btn {
+ 	color: #FFF;
+ 	background-color: #00e600;
+}
+
+#btn-switch-close.actived-btn {
+ 	color: #FFF;
+ 	background-color: #ff1a1a;
+}
+
+.footer {
+	width: 100vw;
+	height: 12.5vh;
+
+	z-index: 100;
+
+	user-select: auto;
+   	-moz-user-select: auto;
+   	-webkit-user-select: auto;
+   	-ms-user-select: auto;
+}
+
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+ /* Add your styles for devices with a maximum width of 320 */
+ 	.open {
+ 		display: block;
+ 	}
+
+ 	.nav-container {
+ 		background-color: #FFF;
+		color: #000;
+ 	}
+
+ 	.selection {
+ 		margin: 10vh 0 0 0;
+		position: absolute;
+ 	}
+
+ 	.selection .btn-link {
+		height: 12.5vh;
+		width: 35vw;
+		font-size: 2.25vh;
+
+		transition: box-shadow 0.17s linear;
+	}
+
+	.selection .btn-link:hover {
+		box-shadow: inset -35vw 0 0 0 #FFF;
+		color: #000;
+	}
+
+	.content.open-selection {
+		margin-left: 13.775vw;
+	}
+
+	.selection .toggle-nav {
+		padding-right: 0;
+		border-right: 1vw solid #FFF;
+	}
+
+	.subject-name {
+		width: 75vw;
+		font-size: 2.75vh;
+
+		border-left-color: #000;
+	}
+
+    .nav-list-menu {
+    	display: inline-flex;
+    }
+
+    .footer {
+    	background-color: #000;
+    	color: #FFF;
+    }
+}
+ 
+@media screen and (min-width: 480px) {
+/* Add your styles for devices with a maximum width of 480 */
+}
+ 
+@media screen and (min-width: 768px) {
+ /* Add your styles for devices with a maximum width of 768 */
+ 	.nav-container {
+ 		background-color: #000;
+		color: #FFF;
+ 	}
+
+	.selection {
+		display: inline-flex;
+		margin: 0;
+
+		width: ;
+		height: inherit;
+
+		flex-direction: ltr;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+
+		background-color: #000;
+
+		z-index: 10;
+	}
+
+	.selection .btn-link {
+		height: inherit;
+		width: 13.5vw;
+
+		transition: box-shadow 0.16s linear;
+	}
+
+	.selection .btn-link:hover {
+		box-shadow: inset 0 -10vh 0 0 #FFF;
+		color: #000;
+	}
+
+ 	.selection .toggle-nav {
+ 		padding-bottom: 0;
+		border-bottom: 1vh solid #FFF;
+	}
+
+	.content.open-selection {
+		margin-left: 13.775vw;
+	}
+
+	.subject-name {
+		width: 17.35vw;
+	}
+
+	.nav-list-menu {
+		display:none;
+	}
+
+	.footer {
+    	background-color: #FFF;
+    	color: #000;
+    }
+}
+ 
+@media screen and (min-width: 1024px) {
+ /* Add your styles for devices with a maximum width of 1024 */
+}
+ 
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+   /* Add your styles for devices with a maximum width of 1024 */
+   .subject-name {
+		margin-top: 1vh;
+		margin-bottom: 1vh;
+		margin-left: 1vw;
+		padding-right: 2.5vw;
+
+		font-size: 2.5vmin;
+		letter-spacing: 0.1vmin;
+	}
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+  /* Add your styles for devices with a maximum width of 768 */
+  .subject-name {
+		margin-top: 2vh;
+		margin-bottom: 2vh;
+		margin-left: 1vw;
+		padding-right: 2.5vw;
+
+		font-size: 2.5vmin;
+		letter-spacing: 0.1vmin;
+	}
+}
+
+/* iPads Pro (landscape) ----------- */
+@media only screen and (min-device-width : 1024px) and (max-device-width : 1366px) and (orientation : landscape) {
+   /* Add your styles for devices with a maximum width of 1024 */
+   .subject-name {
+		margin-top: 3.25vh;
+		margin-bottom: 2.5vh;
+		margin-left: 1vw;
+		padding-right: 1.25vw;
+
+		font-size: 2.25vmin;
+		letter-spacing: 0.1vmin;
+	}
+}
+
+@media only screen and (max-width: 0px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    .nav-container {
+    	background-color: initial;
+    }
+}
